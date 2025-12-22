@@ -1,0 +1,50 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
+  presets: [require("nativewind/preset")],
+  theme: {
+    extend: {
+      colors: {
+        background: '#FFFFFF',
+        foreground: '#1F2937',
+        primary: '#3B82F6',
+        secondary: '#9CA3AF',
+        accent: '#F472B6',
+        // Grays
+        'gray-100': '#F3F4F6',
+        'gray-200': '#E5E7EB',
+        'gray-300': '#D1D5DB',
+        'gray-400': '#9CA3AF',
+        'gray-500': '#6B7280',
+        'gray-600': '#4B5563',
+        'gray-700': '#374151',
+        'gray-800': '#1F2937',
+        'gray-900': '#111827',
+      },
+      fontSize: {
+        'xs': '.75rem',
+        'sm': '.875rem',
+        'base': '1rem',
+        'lg': '1.125rem',
+        'xl': '1.25rem',
+        '2xl': '1.5rem',
+        '3xl': '1.875rem',
+        '4xl': '2.25rem',
+        '5xl': '3rem',
+        '6xl': '4rem',
+      },
+      fontWeight: {
+        'thin': '100',
+        'extralight': '200',
+        'light': '300',
+        'normal': '400',
+        'medium': '500',
+        'semibold': '600',
+        'bold': '700',
+        'extrabold': '800',
+        'black': '900',
+      },
+    },
+  },
+  plugins: [],
+}

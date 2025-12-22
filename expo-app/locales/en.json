@@ -1,0 +1,39 @@
+{
+  "translation": {
+    "welcome": "Welcome to DishLover",
+    "email": "Email",
+    "password": "Password",
+    "login": "Login",
+    "profile": {
+      "title": "Profile",
+      "greeting": "Heyyy {{name}}",
+      "diet": "Diet",
+      "favorites": "Favorites",
+      "cookedRecipes": "Cooked Recipes",
+      "userInfo": "User Info"
+    },
+    "settings": {
+      "title": "Settings",
+      "appSettings": "App Settings",
+      "account": "My Account",
+      "region": "Region",
+      "language": "Language",
+      "cookingSettings": "Cooking Settings",
+      "temperatureUnit": "Temperature Unit",
+      "measurements": "Measurements",
+      "servings": "Servings",
+      "diet": "Diet",
+      "dislikes": "I Don't Eat That",
+      "notifications": "Notifications",
+      "support": "Support",
+      "feedback": "Feedback",
+      "faq": "FAQ",
+      "restorePurchases": "Restore Purchases",
+      "legal": "Legal",
+      "imprint": "Imprint",
+      "terms": "Terms of Use",
+      "privacy": "Privacy Policy",
+      "signOut": "Sign Out"
+    }
+  }
+}
