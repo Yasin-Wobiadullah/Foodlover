@@ -27,8 +27,8 @@ export default function SimplePage({
   };
 
   return (
-    <View>
-            <View className="absolute top-0 left-0 right-0 z-10">
+    <View style={{ flex: 1 }}>
+      <View className="absolute top-0 left-0 right-0 z-10">
         <ButtonHeader
           title={title}
           leftButtonIcon="close"
@@ -37,8 +37,6 @@ export default function SimplePage({
         />
       </View>
       <ScrollView className="flex-1 pt-20">{children}</ScrollView>
-
     </View>
-
   );
-} 
+}

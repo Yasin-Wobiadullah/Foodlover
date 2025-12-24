@@ -15,6 +15,7 @@ import { useReactNavigationDevTools } from '@dev-plugins/react-navigation';
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { AuthProvider } from '../context/AuthContext';
+import { RevenueCatProvider } from '../context/RevenueCatContext';
 
 export const unstable_settings = {
   initialRouteName: '(app)',
@@ -58,10 +59,12 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <I18nextProvider i18n={i18n}>
         <AuthProvider>
-          <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-            <RootLayoutNav />
-            <StatusBar style="auto" />
-          </ThemeProvider>
+          <RevenueCatProvider>
+            <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+              <RootLayoutNav />
+              <StatusBar style="auto" />
+            </ThemeProvider>
+          </RevenueCatProvider>
         </AuthProvider>
       </I18nextProvider>
     </SafeAreaProvider>

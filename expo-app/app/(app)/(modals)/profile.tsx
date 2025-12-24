@@ -6,8 +6,8 @@ import { ThemedText } from '@/components/ui/themed-text';
 import ProfileAvatar from '@/components/profile/ProfileAvatar';
 import ShortcutCard from '@/components/profile/ShortcutCard';
 import { useRouter } from 'expo-router';
-import { Button } from '@/components/ui/button';
 import { useAuth } from '@/context/AuthContext';
+import CircularButton from '@/components/ui/circular-button';
 
 export default function ProfileScreen() {
   const { t } = useTranslation();
@@ -18,9 +18,7 @@ export default function ProfileScreen() {
     <SimplePage
       title={t('profile.title')}
       rightButton={
-        <Button variant="icon" size="icon" onPress={() => router.push('/(app)/(modals)/settings')}>
-          <Text className="material-symbols-outlined text-2xl text-foreground">settings</Text>
-        </Button>
+        <CircularButton icon="settings" onPress={() => router.push('/(app)/(modals)/settings')} />
       }
     >
       <View className="items-center my-6">

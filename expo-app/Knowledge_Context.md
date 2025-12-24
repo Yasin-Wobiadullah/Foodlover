@@ -35,6 +35,7 @@ The app uses a custom design system built with Tailwind CSS and Nativewind.
 - Create reusable components for any UI element that is used in more than one place.
 - Keep components small and focused on a single responsibility.
 - Use the `cva` (class-variance-authority) library to create variants of components.
+- The `List` component (`components/ui/List.tsx`) should be used to create lists with subsections. It supports a title and a list of items with icons.
 
 ### Supabase
 
