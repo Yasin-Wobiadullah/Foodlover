@@ -12,6 +12,9 @@
   },
   "dependencies": {
     "@dev-plugins/react-navigation": "^0.4.0",
+    "@expo-google-fonts/inter": "^0.4.2",
+    "@expo-google-fonts/lora": "^0.4.2",
+    "@expo-google-fonts/material-symbols": "^0.4.16",
     "@expo/vector-icons": "^15.0.3",
     "@invertase/react-native-apple-authentication": "^2.5.0",
     "@react-native-async-storage/async-storage": "^2.2.0",
@@ -39,6 +42,7 @@
     "expo-system-ui": "~6.0.8",
     "expo-web-browser": "~15.0.9",
     "i18next": "^25.6.2",
+    "material-symbols": "^0.40.2",
     "nativewind": "^4.1.23",
     "prettier-plugin-tailwindcss": "^0.5.14",
     "react": "19.1.0",

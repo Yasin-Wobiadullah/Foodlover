@@ -7,14 +7,14 @@ const textVariants = cva(
   {
     variants: {
       variant: {
-        default: 'text-base font-normal',
-        title: 'text-4xl font-extrabold',
-        h1: 'text-3xl font-bold',
-        h2: 'text-2xl font-bold',
-        h3: 'text-xl font-bold',
-        h4: 'text-lg font-bold',
-        body: 'text-base font-normal',
-        link: 'text-base font-semibold text-primary',
+        default: 'text-base font-inter',
+        title: 'text-4xl font-lora-bold',
+        h1: 'text-3xl font-lora-bold',
+        h2: 'text-3xl font-lora-bold',
+        h3: 'text-xl font-lora-bold',
+        h4: 'text-lg font-lora-bold',
+        body: 'text-base font-inter',
+        link: 'text-base font-inter-semibold text-primary',
       },
     },
     defaultVariants: {

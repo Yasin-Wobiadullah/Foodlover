@@ -2,11 +2,10 @@ import React from 'react';
 import { View } from 'react-native';
 import { ThemedText } from './themed-text';
 import CircularButton from './circular-button';
-import { MaterialIcons } from '@expo/vector-icons';
 
 interface ButtonHeaderProps {
   title?: string;
-  leftButtonIcon?: keyof typeof MaterialIcons.glyphMap;
+  leftButtonIcon?: string;
   onLeftButtonPress?: () => void;
   rightButton?: React.ReactNode;
 }

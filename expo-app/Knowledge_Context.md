@@ -1,15 +1,43 @@
-# DishLover Knowledge Base
+# Knowledge Context
 
-This document contains important rules and best practices for developing the DishLover app.
+This document contains important information about the Foodlover app that future developers (including LLMs) should be aware of.
 
-## 1. `SafeAreaView`
+## Design System
 
-Always  from `react-native-safe-area-context`,  WARN  SafeAreaView has been deprecated and will be removed in a future release. Please use 'react-native-safe-area-context' instead. See https://github.com/th3rdwave/react-native-safe-area-context
+The app uses a custom design system built with Tailwind CSS and Nativewind.
 
-## 2. `SafeAreaProvider`
+### Color Palette
 
-The entire application should be wrapped in a `SafeAreaProvider` at the root level. This is typically done in the main `_layout.tsx` file.
+- **Background**: `#F8F9FA` (Cool Off-White)
+- **Accent**: `#556B2F` (Olive Green)
+- **Text/Primary**: `#000000` (Pure Black)
 
-## 3. `useSafeAreaInsets`
+### Fonts
 
-For complex layouts where you need more control over the safe area, use the `useSafeAreaInsets` hook to get the inset values and apply them manually as padding or margins.
+- **Headings**: Lora (Bold) - Use the `font-lora` class.
+- **Body Text**: Inter (Semibold/Bold) - Use the `font-inter` class with `font-semibold` or `font-bold`.
+
+### Icons
+
+- **Library**: Material Symbols
+- **Implementation**: The app uses the `material-symbols` package with a font-based approach. To use an icon, create a `Text` component with the `material-symbols-outlined` class and the desired icon name as the child.
+- **Example**: `<Text className="material-symbols-outlined">settings</Text>`
+
+## Best Practices
+
+### Internationalization (i18n)
+
+- All user-facing text **must** be added to the `locales/en.json` file and accessed using the `useTranslation` hook from `react-i18next`.
+- Do not hardcode text in the components.
+
+### Componentization
+
+- Create reusable components for any UI element that is used in more than one place.
+- Keep components small and focused on a single responsibility.
+- Use the `cva` (class-variance-authority) library to create variants of components.
+
+### Supabase
+
+- **Types**: The `types/supabase.ts` file contains TypeScript types generated from the database schema. This file should be regenerated whenever the database schema changes using the `supabase gen types --linked > types/supabase.ts` command.
+- **Queries**: Use the Supabase JS client to query the database.
+- **Security**: For sensitive operations (writes, updates, deletes), use Supabase Edge Functions. For read-only operations, use direct queries with Row-Level Security (RLS).

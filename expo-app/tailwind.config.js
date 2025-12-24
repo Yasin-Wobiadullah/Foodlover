@@ -5,9 +5,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: '#FFFFFF',
-        foreground: '#1F2937',
-        primary: '#3B82F6',
+        background: '#F8F9FA',
+        foreground: '#000000',
+        primary: '#556B2F',
         secondary: '#9CA3AF',
         accent: '#F472B6',
         // Grays
@@ -20,6 +20,15 @@ module.exports = {
         'gray-700': '#374151',
         'gray-800': '#1F2937',
         'gray-900': '#111827',
+      },
+      fontFamily: {
+        'lora': ['Lora_400Regular'],
+        'lora-bold': ['Lora_700Bold'],
+        'inter': ['Inter_400Regular'],
+        'inter-semibold': ['Inter_600SemiBold'],
+        'inter-bold': ['Inter_700Bold'],
+        'material-symbols': ['MaterialSymbols_400Regular'],
+        'material-symbols-bold': ['MaterialSymbols_700Bold'],
       },
       fontSize: {
         'xs': '.75rem',

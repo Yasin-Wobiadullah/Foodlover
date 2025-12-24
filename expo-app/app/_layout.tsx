@@ -1,6 +1,8 @@
 import '../global.css';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
+import { useFonts, Lora_400Regular, Lora_700Bold } from '@expo-google-fonts/lora';
+import { Inter_400Regular, Inter_600SemiBold, Inter_700Bold } from '@expo-google-fonts/inter';
+import { MaterialSymbols_400Regular, MaterialSymbols_700Bold } from '@expo-google-fonts/material-symbols';
 import { Stack, useNavigationContainerRef } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
@@ -33,7 +35,13 @@ export default function RootLayout() {
   
   const colorScheme = useColorScheme();
   const [fontsLoaded, fontError] = useFonts({
-    'Inter-Black': require('../assets/fonts/Inter-Black.ttf'),
+    'Lora_400Regular': Lora_400Regular,
+    'Lora_700Bold': Lora_700Bold,
+    'Inter_400Regular': Inter_400Regular,
+    'Inter_600SemiBold': Inter_600SemiBold,
+    'Inter_700Bold': Inter_700Bold,
+    'MaterialSymbols_400Regular': MaterialSymbols_400Regular,
+    'MaterialSymbols_700Bold': MaterialSymbols_700Bold,
   });
 
   useEffect(() => {

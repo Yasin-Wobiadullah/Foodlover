@@ -1,10 +1,9 @@
 import React from 'react';
-import { Pressable } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { Pressable, Text } from 'react-native';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
 interface CircularButtonProps {
-  icon: keyof typeof MaterialIcons.glyphMap;
+  icon: string;
   onPress: () => void;
   size?: number;
 }
@@ -20,11 +19,7 @@ export default function CircularButton({ icon, onPress, size = 48 }: CircularBut
       className="rounded-full items-center justify-center bg-background"
       style={{ width: size, height: size }}
     >
-      <MaterialIcons
-        name={icon}
-        size={size * 0.6}
-        className="text-foreground"
-      />
+      <Text style={{ fontSize: size * 0.6 }} className="material-symbols-outlined text-foreground">{icon}</Text>
     </Pressable>
   );
 }

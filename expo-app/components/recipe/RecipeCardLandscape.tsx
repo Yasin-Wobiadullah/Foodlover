@@ -33,7 +33,7 @@ export default function RecipeCardLandscape({
           <ThemedText className="text-white text-sm">{cookTime}</ThemedText>
         </View>
       </View>
-      <ThemedText variant="h3" className="mt-4">{title}</ThemedText>
+      <ThemedText variant="body" className="mt-4 font-inter-bold text-xl">{title}</ThemedText>
       <View className="flex-row items-center mt-2">
         <ProfileAvatar source={authorImageUrl} size={32} />
         <ThemedText variant="body" className="ml-2">{author}</ThemedText>

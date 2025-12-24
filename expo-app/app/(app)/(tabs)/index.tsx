@@ -89,7 +89,7 @@ export default function HomeScreen() {
       </ParallaxScrollView>
       <View style={styles.header}>
         <Link href="/(app)/(modals)/profile" asChild>
-          <CircularButton icon="account-circle" onPress={() => router.push('/(app)/(modals)/profile')} />
+          <CircularButton icon="person" onPress={() => router.push('/(app)/(modals)/profile')} />
         </Link>
       </View>
     </View>
@@ -99,7 +99,6 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
   },
   header: {
     position: 'absolute',
@@ -108,11 +107,11 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   contentOuterContainer: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'transparent',
   },
   contentContainer: {
     padding: 24,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'transparent',
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
     marginTop: -24,
