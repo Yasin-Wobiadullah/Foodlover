@@ -3,104 +3,110 @@ import { View, Text, ScrollView } from 'react-native';
 import SimplePage from '@/components/ui/simple-page';
 import { useTranslation } from 'react-i18next';
 import List from '@/components/ui/List';
+import { useRouter } from 'expo-router';
+import { ThemedText } from '@/components/ui/themed-text';
+import { useRevenueCat } from '@/context/RevenueCatContext';
 import RevenueCatUI from 'react-native-purchases-ui';
 
 export default function SettingsScreen() {
   const { t } = useTranslation();
+  const router = useRouter();
+  const { user } = useRevenueCat();
 
   const sections = [
     {
-      title: 'Account Management',
+      title: t('settings.accountManagement'),
       items: [
         {
           icon: 'credit_card',
-          name: 'My Subscription',
+          name: t('settings.mySubscription'),
           onPress: async () => {
+            router.back();
             try {
               await RevenueCatUI.presentCustomerCenter();
             } catch (e) {
               console.error('Error presenting customer center:', e);
             }
           },
-          rightContent: <Text style={{ color: '#6B7280' }}>Pro</Text>,
+          rightContent: user.isPro ? <Text style={{ color: '#6B7280' }}>Pro</Text> : null,
         },
         {
           icon: 'restaurant',
-          name: 'Food Preferences',
-          onPress: () => console.log('Food Preferences pressed'),
-          rightContent: <Text style={{ color: '#6B7280' }}>Everything</Text>,
+          name: t('settings.foodPreferences'),
+          onPress: () => {},
+          rightContent: <Text style={{ color: '#6B7280' }}>{t('settings.everything')}</Text>,
         },
       ],
     },
     {
-      title: 'System',
+      title: t('settings.system'),
       items: [
         {
           icon: 'language',
-          name: 'Language',
-          onPress: () => console.log('Language pressed'),
-          rightContent: <Text style={{ color: '#6B7280' }}>English</Text>,
+          name: t('settings.language'),
+          onPress: () => {},
+          rightContent: <Text style={{ color: '#6B7280' }}>{t('settings.english')}</Text>,
         },
         {
           icon: 'straighten',
-          name: 'Measurement System',
-          onPress: () => console.log('Measurement System pressed'),
-          rightContent: <Text style={{ color: '#6B7280' }}>Metric</Text>,
+          name: t('settings.measurementSystem'),
+          onPress: () => {},
+          rightContent: <Text style={{ color: '#6B7280' }}>{t('settings.metric')}</Text>,
         },
       ],
     },
     {
-      title: 'Support',
+      title: t('settings.support'),
       items: [
         {
           icon: 'help',
-          name: 'FAQ',
-          onPress: () => console.log('FAQ pressed'),
+          name: t('settings.faq'),
+          onPress: () => {},
         },
         {
           icon: 'feedback',
-          name: 'Feedback',
-          onPress: () => console.log('Feedback pressed'),
+          name: t('settings.feedback'),
+          onPress: () => {},
         },
         {
           icon: 'bug_report',
-          name: 'Report a Bug',
-          onPress: () => console.log('Report a Bug pressed'),
+          name: t('settings.reportABug'),
+          onPress: () => {},
         },
       ],
     },
     {
-      title: 'Recommend',
+      title: t('settings.recommend'),
       items: [
         {
           icon: 'share',
-          name: 'Tell a Friend',
-          onPress: () => console.log('Tell a Friend pressed'),
+          name: t('settings.tellAFriend'),
+          onPress: () => {},
         },
         {
           icon: 'star',
-          name: 'Rate App',
-          onPress: () => console.log('Rate App pressed'),
+          name: t('settings.rateApp'),
+          onPress: () => {},
         },
       ],
     },
     {
-      title: 'Information',
+      title: t('settings.information'),
       items: [
         {
           icon: 'info',
-          name: 'About Us',
-          onPress: () => console.log('About Us pressed'),
+          name: t('settings.aboutUs'),
+          onPress: () => {},
         },
         {
           icon: 'gavel',
-          name: 'Terms of Service',
-          onPress: () => console.log('Terms of Service pressed'),
+          name: t('settings.termsOfService'),
+          onPress: () => {},
         },
         {
           icon: 'privacy_tip',
-          name: 'Privacy Policy',
-          onPress: () => console.log('Privacy Policy pressed'),
+          name: t('settings.privacyPolicy'),
+          onPress: () => {},
         },
       ],
     },

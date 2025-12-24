@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --background: #F8F9FA;
+    --foreground: #000000;
+    --primary: #556B2F;
+    --secondary: #9CA3AF;
+    --accent: #F472B6;
+  }
+  .dark {
+    --background: #000000;
+    --foreground: #F8F9FA;
+    --primary: #556B2F;
+    --secondary: #9CA3AF;
+    --accent: #F472B6;
+  }
+}
+
 .material-symbols-outlined {
   font-family: 'MaterialSymbols_400Regular';
   font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 24;

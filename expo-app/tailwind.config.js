@@ -5,11 +5,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: '#F8F9FA',
-        foreground: '#000000',
-        primary: '#556B2F',
-        secondary: '#9CA3AF',
-        accent: '#F472B6',
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        primary: 'var(--primary)',
+        secondary: 'var(--secondary)',
+        accent: 'var(--accent)',
         // Grays
         'gray-100': '#F3F4F6',
         'gray-200': '#E5E7EB',

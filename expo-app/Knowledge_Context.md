@@ -30,6 +30,14 @@ The app uses a custom design system built with Tailwind CSS and Nativewind.
 - All user-facing text **must** be added to the `locales/en.json` file and accessed using the `useTranslation` hook from `react-i18next`.
 - Do not hardcode text in the components.
 
+**How it works:**
+
+1.  **`i18n.ts`**: This file (in `lib/i18n.ts`) initializes `i18next` and sets up the default language and resources.
+2.  **`locales/en.json`**: This file contains all the English translations. The keys are nested to create a logical structure.
+3.  **`useTranslation` hook**: In your components, you use the `useTranslation` hook to get the `t` function.
+4.  **`t` function**: You use the `t` function to access the translations. For example, `t('settings.title')` will get the "Settings" string from the `en.json` file.
+5.  **`I18nextProvider`**: The root of the app is wrapped in the `I18nextProvider` to make the `i18n` instance available to all components.
+
 ### Componentization
 
 - Create reusable components for any UI element that is used in more than one place.

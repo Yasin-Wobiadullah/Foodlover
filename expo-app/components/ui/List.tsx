@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
   listSectionTitle: {
     fontSize: 20,
-    fontFamily: 'Lora_700Bold',
+    fontFamily: 'Inter_700Bold',
     marginBottom: 12,
     paddingHorizontal: 16,
   },
