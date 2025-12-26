@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect, useContext } from 'react';
 import { Session, User } from '@supabase/supabase-js';
 import { supabase } from '../lib/supabase';
 import { Tables } from '@/types/supabase';
+import Purchases from 'react-native-purchases';
 
 type Profile = Tables<'profiles'>;
 
@@ -56,22 +57,30 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
 
     const { data: authListener } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
+      async (_event, session) => {
         setSession(session);
         setUser(session?.user ?? null);
         if (session?.user) {
-          supabase
-            .from('profiles')
-            .select('*')
-            .eq('id', session.user.id)
-            .single()
-            .then(({ data, error }) => {
-              if (error) {
-                console.error('Error fetching profile on change:', error);
-              }
-              setProfile(data);
-            });
+          try {
+            await Purchases.logIn(session.user.id);
+            const { data, error } = await supabase
+              .from('profiles')
+              .select('*')
+              .eq('id', session.user.id)
+              .single();
+            if (error) {
+              console.error('Error fetching profile on change:', error);
+            }
+            setProfile(data);
+          } catch (e) {
+            console.error('Error logging in to RevenueCat:', e);
+          }
         } else {
+          try {
+            await Purchases.logOut();
+          } catch (e) {
+            console.error('Error logging out of RevenueCat:', e);
+          }
           setProfile(null);
         }
       }
