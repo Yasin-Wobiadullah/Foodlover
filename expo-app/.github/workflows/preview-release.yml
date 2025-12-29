@@ -1,0 +1,30 @@
+name: Preview Release
+
+on:
+  push:
+    branches:
+      - preview
+
+jobs:
+  build-and-submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install EAS CLI
+        run: npm install -g eas-cli
+
+      - name: Build app
+        run: eas build --profile preview --platform ios --non-interactive
+
+      - name: Submit to TestFlight
+        run: eas submit --profile preview --latest --non-interactive

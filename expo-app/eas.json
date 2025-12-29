@@ -7,24 +7,34 @@
     "development": {
       "developmentClient": true,
       "distribution": "internal",
+      "channel": "development",
       "env": {
-        "EXPO_PUBLIC_REVENUECAT_API_KEY": "test_XlWskNjzmapwwrgsjsLofEnlFYq"
+        "EXPO_PUBLIC_REVENUECAT_IOS_KEY": "${EXPO_PUBLIC_REVENUECAT_IOS_KEY}"
       }
     },
     "preview": {
       "distribution": "internal",
+      "channel": "preview",
       "env": {
-        "EXPO_PUBLIC_REVENUECAT_API_KEY": "test_XlWskNjzmapwwrgsjsLofEnlFYq"
+        "EXPO_PUBLIC_REVENUECAT_IOS_KEY": "${EXPO_PUBLIC_REVENUECAT_IOS_KEY}"
       }
     },
     "production": {
+      "distribution": "store",
+      "channel": "production",
       "autoIncrement": true,
       "env": {
-        "EXPO_PUBLIC_REVENUECAT_API_KEY": "prod_your_api_key_here"
+        "EXPO_PUBLIC_REVENUECAT_IOS_KEY": "${EXPO_PUBLIC_REVENUECAT_IOS_KEY}"
       }
     }
   },
   "submit": {
-    "production": {}
+    "production": {},
+    "preview": {
+      "ios": {
+        "appleTeamId": "YOUR_APPLE_TEAM_ID",
+        "ascAppId": "YOUR_APP_STORE_CONNECT_APP_ID"
+      }
+    }
   }
 }

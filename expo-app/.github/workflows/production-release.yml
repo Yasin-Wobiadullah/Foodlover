@@ -1,0 +1,27 @@
+name: Production Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  promote-to-production:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install EAS CLI
+        run: npm install -g eas-cli
+
+      - name: Promote to production
+        run: eas update:republish --source-channel preview --destination-channel production
+
+      - name: Submit to App Store
+        run: eas submit --profile production --latest --non-interactive
