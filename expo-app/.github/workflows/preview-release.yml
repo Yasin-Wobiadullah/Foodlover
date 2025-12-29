@@ -6,8 +6,11 @@ on:
       - preview
 
 jobs:
-  build-and-submit:
+  build-and-update:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./expo-app
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -23,8 +26,16 @@ jobs:
       - name: Install EAS CLI
         run: npm install -g eas-cli
 
-      - name: Build app
-        run: eas build --profile preview --platform ios --non-interactive
+      - name: Build or Update
+        run: |
+          set -e
+          FINGERPRINT=$(eas fingerprint:generate --profile preview --platform ios --non-interactive | jq -r .hash)
+          BUILD_ID=$(eas build:list --platform ios --channel preview --json | jq -r --arg FINGERPRINT "$FINGERPRINT" '.[] | select(.fingerprint == $FINGERPRINT) | .id')
+          if [ -z "$BUILD_ID" ]; then
+            eas build --profile preview --platform ios --non-interactive
+          else
+            eas update --branch preview --non-interactive
+          fi
 
       - name: Submit to TestFlight
         run: eas submit --profile preview --latest --non-interactive
