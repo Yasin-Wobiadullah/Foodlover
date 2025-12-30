@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { ThemedText } from './themed-text';
 import ListItem from './ListItem';
 
@@ -9,8 +9,8 @@ type ListSectionProps = {
 };
 
 const ListSection: React.FC<ListSectionProps> = ({ title, items }) => (
-  <View style={styles.listSection}>
-    <ThemedText style={styles.listSectionTitle}>{title}</ThemedText>
+  <View className="mb-6">
+    <ThemedText className="text-xl font-inter-bold mb-3 px-4">{title}</ThemedText>
     {items.map((item, index) => (
       <ListItem key={index} {...item} />
     ))}
@@ -28,17 +28,5 @@ const List: React.FC<ListProps> = ({ sections }) => (
     ))}
   </View>
 );
-
-const styles = StyleSheet.create({
-  listSection: {
-    marginBottom: 24,
-  },
-  listSectionTitle: {
-    fontSize: 20,
-    fontFamily: 'Inter_700Bold',
-    marginBottom: 12,
-    paddingHorizontal: 16,
-  },
-});
 
 export default List;

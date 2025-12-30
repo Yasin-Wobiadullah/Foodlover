@@ -27,8 +27,8 @@ module.exports = {
         'inter': ['Inter_400Regular'],
         'inter-semibold': ['Inter_600SemiBold'],
         'inter-bold': ['Inter_700Bold'],
-        'material-symbols': ['MaterialSymbols_400Regular'],
-        'material-symbols-bold': ['MaterialSymbols_700Bold'],
+        'material': ['MaterialSymbols_400Regular'],
+        'material-bold': ['MaterialSymbols_700Bold'],
       },
       fontSize: {
         'xs': '.75rem',

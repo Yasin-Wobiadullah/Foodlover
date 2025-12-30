@@ -15,7 +15,7 @@ export default function ShortcutCard({ title, icon, onPress }: ShortcutCardProps
       onPress={onPress}
     >
       <Text className="material-symbols-outlined text-3xl text-primary">{icon}</Text>
-      <ThemedText className="mt-2 font-semibold text-primary">{title}</ThemedText>
+      <ThemedText className="mt-2 font-inter-semibold text-primary">{title}</ThemedText>
     </Pressable>
   );
 }

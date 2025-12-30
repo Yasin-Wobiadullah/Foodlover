@@ -13,7 +13,7 @@ export default function GoogleSignInButton() {
     try {
       GoogleSignin.configure({
         webClientId: '169669624492-rbkvebmg8lbf7h66ig61e8j9iiab6qal.apps.googleusercontent.com',
-        iosClientId: '169669624492-94s6v02kn20v9hgd6kc4c0nrellsh6ec.apps.googleusercontent.com',
+        iosClientId: '169669624492-r4tfj3ep2tkg1kkvppspgk0vctavt5l9.apps.googleusercontent.com',
       });
 
       await GoogleSignin.hasPlayServices();

@@ -3,21 +3,18 @@ import React from 'react';
 import { Pressable, Text } from 'react-native';
 
 import { HapticTab } from '@/components/ui/haptic-tab';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/use-color-scheme';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
   const router = useRouter();
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: 'var(--primary)',
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarStyle: {
-          backgroundColor: Colors[colorScheme ?? 'light'].background,
+          backgroundColor: 'var(--background)',
           borderTopWidth: 0,
         },
       }}>

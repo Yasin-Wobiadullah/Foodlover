@@ -9,19 +9,50 @@ import 'react-native-reanimated';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '../lib/i18n';
 import { SplashScreen } from 'expo-router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useReactNavigationDevTools } from '@dev-plugins/react-navigation';
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
-import { AuthProvider } from '../context/AuthContext';
+import { AuthProvider, useAuth } from '../context/AuthContext';
 import { RevenueCatProvider } from '../context/RevenueCatContext';
+import { useRouter, useSegments, Redirect } from 'expo-router';
+import Purchases from 'react-native-purchases';
+
+// Reduce noisy debug logs like "Vending Offerings from memory cache"
+Purchases.setLogLevel(Purchases.LOG_LEVEL.INFO);
+
+// Configure Purchases once; guard against re-configuring during fast refresh
+Purchases.isConfigured().then((configured) => {
+  if (!configured && process.env.EXPO_PUBLIC_REVENUECAT_IOS_KEY) {
+    Purchases.configure({ apiKey: process.env.EXPO_PUBLIC_REVENUECAT_IOS_KEY });
+  }
+});
 
 export const unstable_settings = {
   initialRouteName: '(app)',
 };
 
 function RootLayoutNav() {
+  const { session, loading } = useAuth();
+  const segments = useSegments();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (loading) {
+      return;
+    }
+    const inApp = segments[0] === '(app)';
+
+    if (!session && inApp) {
+      router.replace('/login');
+    } else if (session && !inApp) {
+        const isLogin = segments.length === 1 && segments[0] === 'login';
+        if (session && isLogin) {
+            router.replace('/');
+        }
+    }
+  }, [session, loading, segments]);
+
   return (
     <Stack>
       <Stack.Screen name="(app)" options={{ headerShown: false }} />
@@ -34,7 +65,6 @@ export default function RootLayout() {
   const navigationRef = useNavigationContainerRef();
   useReactNavigationDevTools(navigationRef);
   
-  const colorScheme = useColorScheme();
   const [fontsLoaded, fontError] = useFonts({
     'Lora_400Regular': Lora_400Regular,
     'Lora_700Bold': Lora_700Bold,
@@ -58,14 +88,14 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <I18nextProvider i18n={i18n}>
-        <AuthProvider>
-          <RevenueCatProvider>
-            <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <RevenueCatProvider>
+          <AuthProvider>
+            <ThemeProvider value={DefaultTheme}>
               <RootLayoutNav />
               <StatusBar style="auto" />
             </ThemeProvider>
-          </RevenueCatProvider>
-        </AuthProvider>
+          </AuthProvider>
+        </RevenueCatProvider>
       </I18nextProvider>
     </SafeAreaProvider>
   );

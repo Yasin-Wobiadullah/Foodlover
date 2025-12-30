@@ -6,16 +6,16 @@
   :root {
     --background: #ECECEC;
     --foreground: #000000;
-    --primary: #556B2F;
+    --primary: #000000;
     --secondary: #9CA3AF;
-    --accent: #e1cb00;
+    --accent: #556B2F;
   }
   .dark {
     --background: #000000;
     --foreground: #ECECEC;
-    --primary: #556B2F;
+    --primary: #000000;
     --secondary: #9CA3AF;
-    --accent: #e1cb00;
+    --accent: #556B2F;
   }
 }
 

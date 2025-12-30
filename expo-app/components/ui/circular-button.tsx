@@ -1,6 +1,5 @@
 import React from 'react';
 import { Pressable, Text } from 'react-native';
-import { useColorScheme } from '@/hooks/use-color-scheme';
 
 interface CircularButtonProps {
   icon: string;
@@ -9,10 +8,6 @@ interface CircularButtonProps {
 }
 
 export default function CircularButton({ icon, onPress, size = 48 }: CircularButtonProps) {
-  const colorScheme = useColorScheme();
-  const backgroundColor = colorScheme === 'dark' ? 'black' : 'white';
-  const iconColor = colorScheme === 'dark' ? 'white' : 'black';
-
   return (
     <Pressable
       onPress={onPress}

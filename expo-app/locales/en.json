@@ -49,7 +49,8 @@
       "imprint": "Imprint",
       "terms": "Terms of Use",
       "privacy": "Privacy Policy",
-      "signOut": "Sign Out"
+      "signOut": "Sign Out",
+      "logout": "Log Out"
     }
   }
 }

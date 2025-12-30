@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import RevenueCatUI from 'react-native-purchases-ui';
 import SimplePage from '@/components/ui/simple-page';
 import { useTranslation } from 'react-i18next';

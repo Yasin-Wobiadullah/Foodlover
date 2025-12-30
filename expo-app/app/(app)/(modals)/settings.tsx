@@ -7,11 +7,13 @@ import { useRouter } from 'expo-router';
 import { ThemedText } from '@/components/ui/themed-text';
 import { useRevenueCat } from '@/context/RevenueCatContext';
 import RevenueCatUI from 'react-native-purchases-ui';
+import { useAuth } from '@/context/AuthContext';
 
 export default function SettingsScreen() {
   const { t } = useTranslation();
   const router = useRouter();
   const { user } = useRevenueCat();
+  const { signOut } = useAuth();
 
   const sections = [
     {
@@ -28,13 +30,18 @@ export default function SettingsScreen() {
               console.error('Error presenting customer center:', e);
             }
           },
-          rightContent: user.isPro ? <Text style={{ color: '#6B7280' }}>Pro</Text> : null,
+          rightContent: user.isPro ? <Text className="text-gray-500">Pro</Text> : null,
+        },
+        {
+          icon: 'logout',
+          name: t('settings.logout'),
+          onPress: signOut,
         },
         {
           icon: 'restaurant',
           name: t('settings.foodPreferences'),
           onPress: () => {},
-          rightContent: <Text style={{ color: '#6B7280' }}>{t('settings.everything')}</Text>,
+          rightContent: <Text className="text-gray-500">{t('settings.everything')}</Text>,
         },
       ],
     },
@@ -45,13 +52,13 @@ export default function SettingsScreen() {
           icon: 'language',
           name: t('settings.language'),
           onPress: () => {},
-          rightContent: <Text style={{ color: '#6B7280' }}>{t('settings.english')}</Text>,
+          rightContent: <Text className="text-gray-500">{t('settings.english')}</Text>,
         },
         {
           icon: 'straighten',
           name: t('settings.measurementSystem'),
           onPress: () => {},
-          rightContent: <Text style={{ color: '#6B7280' }}>{t('settings.metric')}</Text>,
+          rightContent: <Text className="text-gray-500">{t('settings.metric')}</Text>,
         },
       ],
     },
@@ -114,8 +121,8 @@ export default function SettingsScreen() {
 
   return (
     <SimplePage title={t('settings.title')}>
-      <ScrollView style={{ flex: 1 }}>
-        <View style={{ paddingTop: 20 }}>
+      <ScrollView className="flex-1">
+        <View className="pt-5">
           <List sections={sections} />
         </View>
       </ScrollView>
