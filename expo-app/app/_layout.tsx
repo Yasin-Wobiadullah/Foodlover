@@ -2,7 +2,7 @@ import '../global.css';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts, Lora_400Regular, Lora_700Bold } from '@expo-google-fonts/lora';
 import { Inter_400Regular, Inter_600SemiBold, Inter_700Bold } from '@expo-google-fonts/inter';
-import { MaterialSymbols_400Regular, MaterialSymbols_700Bold } from '@expo-google-fonts/material-symbols';
+import { MaterialSymbols_400Regular, MaterialSymbols_700Bold, MaterialSymbols_600SemiBold } from '@expo-google-fonts/material-symbols';
 import { Stack, useNavigationContainerRef } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
@@ -14,7 +14,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useReactNavigationDevTools } from '@dev-plugins/react-navigation';
 
 import { AuthProvider, useAuth } from '../context/AuthContext';
-import { RevenueCatProvider } from '../context/RevenueCatContext';
+import { RevenueCatProvider, useRevenueCat } from '../context/RevenueCatContext';
 import { useRouter, useSegments, Redirect } from 'expo-router';
 import Purchases from 'react-native-purchases';
 
@@ -34,6 +34,7 @@ export const unstable_settings = {
 
 function RootLayoutNav() {
   const { session, loading } = useAuth();
+  const { user } = useRevenueCat();
   const segments = useSegments();
   const router = useRouter();
 
@@ -42,16 +43,20 @@ function RootLayoutNav() {
       return;
     }
     const inApp = segments[0] === '(app)';
+    const isPaywall = (segments as string[]).includes('paywall');
 
     if (!session && inApp) {
       router.replace('/login');
-    } else if (session && !inApp) {
+    } else if (session && !user.isPro && inApp && !isPaywall) {
+      router.replace('/paywall');
+    } else if (session && user.isPro) {
+        // If user is pro, they shouldn't be on paywall or login
         const isLogin = segments.length === 1 && segments[0] === 'login';
-        if (session && isLogin) {
+        if (isLogin || isPaywall) {
             router.replace('/');
         }
     }
-  }, [session, loading, segments]);
+  }, [session, loading, segments, user.isPro]);
 
   return (
     <Stack>
@@ -73,6 +78,7 @@ export default function RootLayout() {
     'Inter_700Bold': Inter_700Bold,
     'MaterialSymbols_400Regular': MaterialSymbols_400Regular,
     'MaterialSymbols_700Bold': MaterialSymbols_700Bold,
+    'MaterialSymbols_600SemiBold': MaterialSymbols_600SemiBold,
   });
 
   useEffect(() => {

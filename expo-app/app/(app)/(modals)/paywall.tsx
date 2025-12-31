@@ -10,10 +10,10 @@ export default function PaywallScreen() {
           offering: null,
         }}
         onPurchaseCompleted={({ customerInfo }) => {
-          console.log('Purchase completed:', customerInfo);
+          console.log('Paywall Purchase completed:', JSON.stringify(customerInfo, null, 2));
         }}
         onRestoreCompleted={({ customerInfo }) => {
-          console.log('Restore completed:', customerInfo);
+          console.log('Paywall Restore completed:', JSON.stringify(customerInfo, null, 2));
         }}
         onDismiss={() => {
           console.log('Paywall dismissed');

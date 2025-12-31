@@ -11,6 +11,10 @@ export default function ModalLayout() {
         name="settings" 
         options={{ headerShown: false }} 
       />
+      <Stack.Screen 
+        name="paywall" 
+        options={{ headerShown: false }} 
+      />
     </Stack>
   );
 }

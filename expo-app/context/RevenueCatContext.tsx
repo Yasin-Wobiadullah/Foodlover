@@ -69,12 +69,18 @@ export const RevenueCatProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   }, []);
 
   useEffect(() => {
-    const customerInfoUpdateHandler = (customerInfo: any) => {
-      setIsPro(customerInfo.entitlements.active.unlock !== undefined);
+    const updateCustomerInfo = (customerInfo: any) => {
+      console.log('RevenueCat Customer Info:', JSON.stringify(customerInfo, null, 2));
+      const hasUnlock = typeof customerInfo.entitlements.active.unlock !== 'undefined';
+      console.log('RevenueCat Is Pro (unlock):', hasUnlock);
+      setIsPro(hasUnlock);
     };
-    Purchases.addCustomerInfoUpdateListener(customerInfoUpdateHandler);
+
+    Purchases.addCustomerInfoUpdateListener(updateCustomerInfo);
+    Purchases.getCustomerInfo().then(updateCustomerInfo).catch(console.error);
+
     return () => {
-      Purchases.removeCustomerInfoUpdateListener(customerInfoUpdateHandler);
+      Purchases.removeCustomerInfoUpdateListener(updateCustomerInfo);
     };
   }, []);
 
