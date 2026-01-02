@@ -14,7 +14,7 @@ export default function TabLayout() {
         <Label>Home</Label>
         <Icon sf={{ default: 'house', selected: 'house.fill' }} />
       </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="search">
+      <NativeTabs.Trigger name="search" role="search">
         <Label>Search</Label>
         <Icon sf={{ default: 'magnifyingglass', selected: 'magnifyingglass.circle.fill' }} />
       </NativeTabs.Trigger>
