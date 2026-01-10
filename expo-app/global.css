@@ -15,11 +15,11 @@
     --foreground: #ECECEC;
     --primary: #000000;
     --secondary: #9CA3AF;
-    --accent: #556B2F;
+    --accent: #404e27;
   }
 }
 
 .material-symbols-outlined {
-  font-family: 'MaterialSymbols_400Regular';
+  font-family: 'MaterialSymbols_  400Regular';
   font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 24;
 }

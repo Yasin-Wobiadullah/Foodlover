@@ -1,59 +1,39 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
   presets: [require("nativewind/preset")],
   theme: {
     extend: {
       colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
-        primary: 'var(--primary)',
-        secondary: 'var(--secondary)',
-        accent: 'var(--accent)',
-        // Grays
-        'gray-100': '#F3F4F6',
-        'gray-200': '#E5E7EB',
-        'gray-300': '#D1D5DB',
-        'gray-400': '#9CA3AF',
-        'gray-500': '#6B7280',
-        'gray-600': '#4B5563',
-        'gray-700': '#374151',
-        'gray-800': '#1F2937',
-        'gray-900': '#111827',
+        primary: "#121411", 
+        "background-light": "#F2F4F1", // Slightly darker off-white to contrast with the grouping cards
+        "background-dark": "#121212",
+        "surface-light": "#FFFFFF",
+        "surface-dark": "#1E1E1E",
+        "tint-green": "#404e27",
+        "tint-green-light": "#E9ECE6", 
+        "tint-green-hover": "#4d5e2f",
+        "gray-text": "#5C5E5A",
+        "gray-text-light": "#A1A1AA"
       },
       fontFamily: {
-        'lora': ['Lora_400Regular'],
-        'lora-bold': ['Lora_700Bold'],
-        'inter': ['Inter_400Regular'],
-        'inter-semibold': ['Inter_600SemiBold'],
-        'inter-bold': ['Inter_700Bold'],
-        'material': ['MaterialSymbols_400Regular'],
-        'material-bold': ['MaterialSymbols_700Bold'],
+        display: ["Outfit", "sans-serif"],
+        sans: ["Plus Jakarta Sans", "sans-serif"],
       },
-      fontSize: {
-        'xs': '.75rem',
-        'sm': '.875rem',
-        'base': '1rem',
-        'lg': '1.125rem',
-        'xl': '1.25rem',
-        '2xl': '1.5rem',
-        '3xl': '1.875rem',
-        '4xl': '2.25rem',
-        '5xl': '3rem',
-        '6xl': '4rem',
+      borderRadius: {
+        DEFAULT: "0.5rem",
+        "xl": "1rem",
+        "2xl": "1.5rem",
+        "3xl": "2rem",
+        "4xl": "2.5rem",
       },
-      fontWeight: {
-        'thin': '100',
-        'extralight': '200',
-        'light': '300',
-        'normal': '400',
-        'medium': '500',
-        'semibold': '600',
-        'bold': '700',
-        'extrabold': '800',
-        'black': '900',
+      boxShadow: {
+          'soft': '0 8px 30px -4px rgba(64, 78, 39, 0.08)',
+          'card': '0 2px 10px -2px rgba(0, 0, 0, 0.03)',
+          'nav': '0 -4px 20px rgba(0,0,0,0.03)',
       },
     },
   },
   plugins: [],
-}
+};

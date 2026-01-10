@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Alert, View, TouchableOpacity, Text } from 'react-native';
+import { Alert, View, TouchableOpacity, Text, TextInput } from 'react-native';
 import { supabase } from '../../lib/supabase';
-import { Button } from '../ui/button';
-import Input from '../ui/input';
+import { Button } from '../ui/Button';
 import * as AppleAuthentication from 'expo-apple-authentication';
 import { Platform } from 'react-native';
 import Constants from 'expo-constants';
@@ -117,7 +116,8 @@ export default function Auth() {
       {showEmailForm && (
         <>
           <View className="py-1 self-stretch">
-            <Input
+            <TextInput
+              className="p-3 bg-white rounded-md"
               onChangeText={(text: string) => setEmail(text)}
               value={email}
               placeholder="email@address.com"
@@ -125,7 +125,8 @@ export default function Auth() {
             />
           </View>
           <View className="py-1 self-stretch">
-            <Input
+            <TextInput
+              className="p-3 bg-white rounded-md"
               onChangeText={(text: string) => setPassword(text)}
               value={password}
               secureTextEntry={true}
@@ -134,10 +135,10 @@ export default function Auth() {
             />
           </View>
           <View className="py-1 self-stretch mt-5">
-            <Button title="Sign in" onPress={() => signInWithEmail()} />
+            <Button label="Sign in" onPress={() => signInWithEmail()} />
           </View>
           <View className="py-1 self-stretch">
-            <Button title="Sign up" variant="filter" onPress={() => signUpWithEmail()} />
+            <Button label="Sign up" variant="secondary" onPress={() => signUpWithEmail()} />
           </View>
         </>
       )}

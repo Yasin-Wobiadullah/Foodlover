@@ -1,7 +1,7 @@
 import React from 'react';
 import { Alert } from 'react-native';
 import { supabase } from '../../lib/supabase';
-import { Button } from '../ui/button';
+import { Button } from '../ui/Button';
 import {
   GoogleSignin,
   statusCodes,

@@ -4,3 +4,11 @@ declare module '*.svg' {
   const content: React.FC<SvgProps>;
   export default content;
 }
+
+import 'react-native';
+
+declare module 'react-native' {
+  export interface TextStyle {
+    fontVariationSettings?: string;
+  }
+}

@@ -1,8 +1,22 @@
 import '../global.css';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts, Lora_400Regular, Lora_700Bold } from '@expo-google-fonts/lora';
-import { Inter_400Regular, Inter_600SemiBold, Inter_700Bold } from '@expo-google-fonts/inter';
-import { MaterialSymbols_400Regular, MaterialSymbols_700Bold, MaterialSymbols_600SemiBold } from '@expo-google-fonts/material-symbols';
+import { useFonts } from 'expo-font';
+import {
+  Outfit_300Light,
+  Outfit_400Regular,
+  Outfit_500Medium,
+  Outfit_600SemiBold,
+  Outfit_700Bold,
+  Outfit_800ExtraBold,
+} from '@expo-google-fonts/outfit';
+import {
+  PlusJakartaSans_400Regular,
+  PlusJakartaSans_500Medium,
+  PlusJakartaSans_600SemiBold,
+  PlusJakartaSans_700Bold,
+  PlusJakartaSans_800ExtraBold,
+} from '@expo-google-fonts/plus-jakarta-sans';
+import { MaterialSymbolsFonts } from 'material-symbols-expo';
 import { Stack, useNavigationContainerRef } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
@@ -53,7 +67,7 @@ function RootLayoutNav() {
         // If user is pro, they shouldn't be on paywall or login
         const isLogin = segments.length === 1 && segments[0] === 'login';
         if (isLogin || isPaywall) {
-            router.replace('/');
+            router.replace('/home');
         }
     }
   }, [session, loading, segments, user.isPro]);
@@ -71,11 +85,17 @@ export default function RootLayout() {
   useReactNavigationDevTools(navigationRef);
   
   const [fontsLoaded, fontError] = useFonts({
-    'Lora_400Regular': Lora_400Regular,
-    'Lora_700Bold': Lora_700Bold,
-    'Inter_400Regular': Inter_400Regular,
-    'Inter_600SemiBold': Inter_600SemiBold,
-    'Inter_700Bold': Inter_700Bold,
+    ...MaterialSymbolsFonts,
+    'Outfit_300Light': Outfit_300Light,
+    'Outfit_500Medium': Outfit_500Medium,
+    'Outfit_600SemiBold': Outfit_600SemiBold,
+    'Outfit_700Bold': Outfit_700Bold,
+    'Outfit_800ExtraBold': Outfit_800ExtraBold,
+    'PlusJakartaSans_400Regular': PlusJakartaSans_400Regular,
+    'PlusJakartaSans_500Medium': PlusJakartaSans_500Medium,
+    'PlusJakartaSans_600SemiBold': PlusJakartaSans_600SemiBold,
+    'PlusJakartaSans_700Bold': PlusJakartaSans_700Bold,
+    'PlusJakartaSans_800ExtraBold': PlusJakartaSans_800ExtraBold,
     'MaterialSymbols_400Regular': MaterialSymbols_400Regular,
     'MaterialSymbols_700Bold': MaterialSymbols_700Bold,
     'MaterialSymbols_600SemiBold': MaterialSymbols_600SemiBold,
