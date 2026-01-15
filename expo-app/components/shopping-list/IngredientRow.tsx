@@ -35,7 +35,7 @@ export function IngredientRow({ ingredient }: IngredientRowProps) {
         <Icon
           name="check"
           size={16}
-          weight={600}
+          style={{fontVariationSettings: "'wght' 600"}}
           className={cn('text-white transition-all', isChecked ? 'opacity-100 scale-100' : 'opacity-0 scale-50')}
         />
       </View>

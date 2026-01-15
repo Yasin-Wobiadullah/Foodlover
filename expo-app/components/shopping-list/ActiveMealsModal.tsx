@@ -46,7 +46,7 @@ export function ActiveMealsModal({ isVisible, onClose }: ActiveMealsModalProps) 
           <View className="flex-row justify-between items-center mb-6">
             <StyledText variant="display-md">Active Meals</StyledText>
             <Pressable onPress={onClose} className="p-2 -mr-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/10">
-              <Icon name="close" weight={600} />
+              <Icon name="close" style={{fontVariationSettings: "'wght' 600"}} />
             </Pressable>
           </View>
 
@@ -90,7 +90,7 @@ function MealCheckbox({ meal }: { meal: { name: string, details: string, checked
                 "mt-1 w-5 h-5 rounded border-2 bg-gray-50 dark:bg-white/10 dark:border-white/20 transition-colors",
                 isChecked ? "bg-tint-green border-tint-green" : "border-gray-300"
             )}>
-               {isChecked && <Icon name="check" size={12} weight={700} color="white" className="self-center" />}
+               {isChecked && <Icon name="check" size={12} style={{fontVariationSettings: "'wght' 700"}} color="white" className="self-center" />}
             </View>
             <View className={cn("flex-1 transition-opacity", !isChecked && "opacity-70")}>
                 <StyledText variant="body-lg" className="leading-tight">{meal.name}</StyledText>

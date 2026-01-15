@@ -9,8 +9,8 @@ import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
 const tabConfig: Record<string, { icon: string; label: string }> = {
     home: { icon: 'home', label: 'Home' },
-    'meal-plan': { icon: 'restaurant_menu', label: 'Meal Plan' },
-    'shopping-list': { icon: 'shopping_bag', label: 'List' },
+    'meal-plan': { icon: 'restaurant', label: 'Meal Plan' },
+    'shopping-list': { icon: 'shopping_cart', label: 'List' },
     search: { icon: 'search', label: 'Search' },
 };
 
@@ -49,9 +49,7 @@ export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
             >
               <Icon
                 name={config.icon}
-                isFilled={isFocused}
                 className={isFocused ? 'text-tint-green dark:text-white' : 'text-gray-400 dark:text-gray-500'}
-                weight={isFocused ? 700 : 400}
                 size={28}
               />
               {isFocused && <StyledText className="text-[11px] font-bold text-tint-green dark:text-white leading-none">{config.label}</StyledText>}
@@ -63,7 +61,7 @@ export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
             className="flex-1 flex-col items-center justify-center gap-1 h-full"
         >
             <View className="flex items-center justify-center w-11 h-11 rounded-full bg-primary text-white shadow-lg shadow-black/20">
-                <Icon name="qr_code_scanner" isFilled size={22} className="text-white" />
+                <Icon name="photo_camera" size={22} className="text-white" />
             </View>
         </Pressable>
       </View>

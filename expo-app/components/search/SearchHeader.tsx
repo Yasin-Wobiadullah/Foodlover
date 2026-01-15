@@ -18,7 +18,7 @@ export function SearchHeader() {
       <View className="flex flex-row justify-between items-center">
         <View className="flex flex-row items-center gap-2">
           <View className="w-8 h-8 rounded-full bg-primary dark:bg-white flex items-center justify-center text-white dark:text-primary shadow-sm">
-            <Icon name="local_dining" size={18} isFilled className="text-white dark:text-primary" />
+            <Icon name="local_dining" size={18} className="text-white dark:text-primary" />
           </View>
           <StyledText variant="body-lg" className="font-display tracking-tight">FoodLover</StyledText>
         </View>

@@ -31,7 +31,7 @@ export function DailyInspirationCard() {
 
         <View className="p-5 flex-row justify-end">
           <View className="bg-white/30 backdrop-blur-md text-white border border-white/20 px-4 py-2 rounded-full text-xs font-bold flex-row items-center gap-1.5">
-            <Icon name="schedule" size={16} isFilled color="white" />
+            <Icon name="timer" size={16} style={{ color: 'white' }} />
             <StyledText className="text-white text-xs font-bold">{recipe.time}</StyledText>
           </View>
         </View>
@@ -48,16 +48,16 @@ export function DailyInspirationCard() {
           <View className="flex-row items-center justify-between">
             <View className="flex-row items-center gap-4 text-white">
               <View className="flex-row items-center gap-1.5 bg-black/40 px-3 py-1.5 rounded-full backdrop-blur-md border border-white/10">
-                <Icon name="star" size={18} isFilled color="#FFD700" />
+                <Icon name="star" size={18} style={{ color: '#FFD700' }} />
                 <StyledText className="text-white font-bold text-sm">{recipe.rating}</StyledText>
               </View>
               <View className="flex-row items-center gap-1.5 font-semibold">
-                <Icon name="local_fire_department" size={18} isFilled color="#FFA500" />
+                <Icon name="local_fire_department" size={18} style={{ color: '#FFA500' }} />
                 <StyledText className="text-white text-sm">{recipe.calories} kcal</StyledText>
               </View>
             </View>
             <Pressable className="w-12 h-12 rounded-full bg-white text-primary flex items-center justify-center shadow-lg">
-              <Icon name="bookmark" size={24} isFilled className="text-primary" />
+              <Icon name="bookmark" size={24} className="text-primary" />
             </Pressable>
           </View>
         </View>

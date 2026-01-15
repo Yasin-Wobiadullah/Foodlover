@@ -55,7 +55,7 @@ export default function SearchScreen() {
           <Card className="mb-10 p-5 flex-row items-center justify-between">
             <View className="flex-row items-center gap-3">
               <View className="w-10 h-10 rounded-full bg-tint-green-light dark:bg-tint-green/20 flex items-center justify-center">
-                <Icon name="tune" weight={600} className="text-tint-green dark:text-tint-green-light" />
+                <Icon name="tune" style={{fontVariationSettings: "'wght' 600"}} className="text-tint-green dark:text-tint-green-light" />
               </View>
               <View>
                 <StyledText variant="body-lg">Food Preferences</StyledText>

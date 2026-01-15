@@ -1,35 +1,35 @@
 import React from 'react';
-import { Text, TextProps } from 'react-native';
+import { Text } from 'react-native';
+import { cn } from '../../lib/utils';
 
-type IconProps = TextProps & {
+type IconWeight = 100 | 200 | 300 | 400 | 500 | 600 | 700;
+
+interface IconProps extends React.ComponentProps<typeof Text> {
   name: string;
   size?: number;
-  color?: string;
-  isFilled?: boolean;
-  weight?: 100 | 200 | 300 | 400 | 500 | 600 | 700;
+  weight?: IconWeight;
+}
+
+const weightToFontFamily: Record<IconWeight, string> = {
+  100: 'MaterialSymbols_100Thin',
+  200: 'MaterialSymbols_200ExtraLight',
+  300: 'MaterialSymbols_300Light',
+  400: 'MaterialSymbols_400Regular',
+  500: 'MaterialSymbols_500Medium',
+  600: 'MaterialSymbols_600SemiBold',
+  700: 'MaterialSymbols_700Bold',
 };
 
-const Icon: React.FC<IconProps> = ({
-  name,
-  size = 24,
-  color,
-  isFilled = false,
-  weight = 400,
-  className,
-  style,
-  ...props
-}) => {
-  const fontVariationSettings = `'FILL' ${isFilled ? 1 : 0}, 'wght' ${weight}, 'GRAD' 0, 'opsz' 24`;
+export function Icon({ name, size = 24, weight = 400, className, style, ...rest }: IconProps) {
+  const fontFamily = weightToFontFamily[weight];
 
   return (
     <Text
-      className={`font-material ${className}`}
-      style={[{ fontSize: size, color, fontVariationSettings }, style]}
-      {...props}
+      style={[{ fontFamily, fontSize: size }, style]}
+      className={cn(className)}
+      {...rest}
     >
       {name}
     </Text>
   );
-};
-
-export { Icon };
+}

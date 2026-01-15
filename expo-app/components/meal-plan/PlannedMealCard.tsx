@@ -31,11 +31,11 @@ export function PlannedMealCard({ meal }: PlannedMealCardProps) {
             <View>
               <StyledText variant="body-lg" className="leading-tight truncate pr-2">{name}</StyledText>
               <StyledText variant="muted" className="flex-row items-center gap-1 mt-0.5">
-                <Icon name={icon} size={16} style={{ color: iconColor }} /> {description}
+                <Icon name={icon as any} size={16} style={{ color: iconColor }} /> {description}
               </StyledText>
             </View>
             <Button variant="ghost" size="icon" className="w-8 h-8">
-              <Icon name="drag_handle" className="text-gray-300" />
+              <Icon name="drag_indicator" className="text-gray-300" />
             </Button>
           </View>
           <View className="flex-row items-center gap-2 mt-3">
@@ -44,7 +44,7 @@ export function PlannedMealCard({ meal }: PlannedMealCardProps) {
                 <Icon name="lock" size={14} />
             </View>
             <Button variant="secondary" size="icon" className="w-8 h-8">
-              <Icon name="more_horiz" weight={600} />
+              <Icon name="more_horiz" />
             </Button>
           </View>
         </View>

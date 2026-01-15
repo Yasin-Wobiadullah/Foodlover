@@ -17,7 +17,7 @@ export function HomeHeader() {
     >
       <View className="flex flex-row items-center gap-3">
         <View className="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white dark:bg-white dark:text-primary shadow-sm">
-          <Icon name="lunch_dining" size={22} className="text-white dark:text-primary" isFilled />
+          <Icon name="restaurant" size={22} className="text-white dark:text-primary" />
         </View>
         <StyledText variant="display-md">FoodLover</StyledText>
       </View>

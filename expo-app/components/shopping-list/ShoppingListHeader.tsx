@@ -19,7 +19,7 @@ export function ShoppingListHeader() {
       <View className="flex flex-row justify-between items-center">
         <View className="flex flex-row items-center gap-2">
           <View className="w-8 h-8 rounded-full bg-primary dark:bg-white flex items-center justify-center text-white dark:text-primary shadow-sm">
-            <Icon name="local_dining" size={18} isFilled className="text-white dark:text-primary" />
+            <Icon name="local_dining" size={18} className="text-white dark:text-primary" />
           </View>
           <StyledText variant="body-lg" className="font-display tracking-tight">FoodLover</StyledText>
         </View>
@@ -31,7 +31,7 @@ export function ShoppingListHeader() {
           <StyledText variant="muted" className="mt-1">12 items to buy</StyledText>
         </View>
         <Pressable className="w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-surface-dark shadow-card text-primary dark:text-white hover:text-tint-green transition-colors">
-            <Icon name="more_horiz" weight={600} />
+            <Icon name="more_horiz" />
         </Pressable>
       </View>
     </View>

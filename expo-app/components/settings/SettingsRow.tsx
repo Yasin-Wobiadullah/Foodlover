@@ -22,7 +22,7 @@ export function SettingsRow({ icon, label, value, valueBg, type, onPress, childr
       className="w-full flex-row items-center justify-between p-4 hover:bg-white dark:hover:bg-white/5 rounded-3xl transition-colors group"
     >
       <View className="flex-row items-center gap-4">
-        <Text className="text-xl">{icon}</Text>
+        <Icon name={icon} size={24} className="text-gray-400" />
         <StyledText variant="body-sm" className="font-bold">{label}</StyledText>
       </View>
       <View className="flex-row items-center gap-2">

@@ -20,7 +20,7 @@ export function UserProfileSection({ onManageSubscription }: { onManageSubscript
                     containerClassName="w-24 h-24 ring-2 ring-gray-100 dark:ring-surface-dark"
                 />
                 <View className="absolute bottom-0 right-0 bg-primary dark:bg-white text-white dark:text-primary rounded-full p-1.5 shadow-md border-2 border-white dark:border-background-dark">
-                    <Icon name="edit" size={14} weight={700} className="text-white dark:text-primary" />
+                    <Icon name="edit" size={14} style={{fontVariationSettings: "'wght' 700"}} className="text-white dark:text-primary" />
                 </View>
             </Pressable>
             <StyledText variant="body-lg" className="font-display">{session?.user?.email}</StyledText>

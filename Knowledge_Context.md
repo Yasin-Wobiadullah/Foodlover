@@ -64,9 +64,9 @@ These colors are defined as CSS variables in `global.css` and are used in `tailw
 
 ### Icons
 
-- **Library**: Material Symbols
-- **Implementation**: The app uses the `material-symbols` package with a font-based approach. To use an icon, create a `Text` component with the `material-symbols-outlined` class and the desired icon name as the child.
-- **Example**: `<Text className="material-symbols-outlined">settings</Text>`
+- **Library**: Lineicons
+- **Implementation**: The app uses the `@lineiconshq/react-native-lineicons` package. To use an icon, import the `Icon` component from `components/ui/Icon.tsx` and provide the desired icon name as the `name` prop.
+- **Example**: `<Icon name="home" size={24} color="black" />`
 
 ## Best Practices
 

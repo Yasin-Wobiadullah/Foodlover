@@ -83,23 +83,23 @@ export default function SettingsScreen() {
 
           <View className="space-y-8">
               <SettingsGroup title="Preferences">
-                  <SettingsRow icon="📏" label="Measurement" type="segmented">
+                  <SettingsRow icon="straighten" label="Measurement" type="segmented">
                       <SegmentedControl options={['Metric', 'US']} selected={measurement} onSelect={setMeasurement} />
                   </SettingsRow>
-                    <SettingsRow icon="🌡️" label="Temperature" type="segmented">
+                    <SettingsRow icon="thermostat" label="Temperature" type="segmented">
                       <SegmentedControl options={['C°', 'F°']} selected={temperature} onSelect={setTemperature} />
                   </SettingsRow>
               </SettingsGroup>
               
               <SettingsGroup title="Food & Diet">
-                  <SettingsRow icon="🥗" label="Diet Type" type="navigate" value="Vegetarian" valueBg="rgba(64, 78, 39, 0.1)" />
-                  <SettingsRow icon="🚫" label="Things I Don't Eat" type="navigate" value="2 items" />
+                  <SettingsRow icon="ramen_dining" label="Diet Type" type="navigate" value="Vegetarian" valueBg="rgba(64, 78, 39, 0.1)" />
+                  <SettingsRow icon="do_not_disturb_on" label="Things I Don't Eat" type="navigate" value="2 items" />
               </SettingsGroup>
 
               <SettingsGroup title="More">
-                  <SettingsRow icon="💭" label="Leave Feedback" type="external" />
-                  <SettingsRow icon="📄" label="Terms of Service" type="navigate" />
-                  <SettingsRow icon="🔒" label="Privacy Policy" type="navigate" />
+                  <SettingsRow icon="chat_bubble_outline" label="Leave Feedback" type="external" />
+                  <SettingsRow icon="description" label="Terms of Service" type="navigate" />
+                  <SettingsRow icon="lock" label="Privacy Policy" type="navigate" />
               </SettingsGroup>
 
               <View className="text-center pb-8 pt-4">

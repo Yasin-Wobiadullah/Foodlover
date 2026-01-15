@@ -2,6 +2,15 @@ import '../global.css';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import {
+  MaterialSymbols_100Thin,
+  MaterialSymbols_200ExtraLight,
+  MaterialSymbols_300Light,
+  MaterialSymbols_400Regular,
+  MaterialSymbols_500Medium,
+  MaterialSymbols_600SemiBold,
+  MaterialSymbols_700Bold,
+} from '@expo-google-fonts/material-symbols';
+import {
   Outfit_300Light,
   Outfit_400Regular,
   Outfit_500Medium,
@@ -16,7 +25,6 @@ import {
   PlusJakartaSans_700Bold,
   PlusJakartaSans_800ExtraBold,
 } from '@expo-google-fonts/plus-jakarta-sans';
-import { MaterialSymbolsFonts } from 'material-symbols-expo';
 import { Stack, useNavigationContainerRef } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
@@ -85,8 +93,8 @@ export default function RootLayout() {
   useReactNavigationDevTools(navigationRef);
   
   const [fontsLoaded, fontError] = useFonts({
-    ...MaterialSymbolsFonts,
     'Outfit_300Light': Outfit_300Light,
+    'Outfit_400Regular': Outfit_400Regular,
     'Outfit_500Medium': Outfit_500Medium,
     'Outfit_600SemiBold': Outfit_600SemiBold,
     'Outfit_700Bold': Outfit_700Bold,
@@ -96,9 +104,13 @@ export default function RootLayout() {
     'PlusJakartaSans_600SemiBold': PlusJakartaSans_600SemiBold,
     'PlusJakartaSans_700Bold': PlusJakartaSans_700Bold,
     'PlusJakartaSans_800ExtraBold': PlusJakartaSans_800ExtraBold,
+    'MaterialSymbols_100Thin': MaterialSymbols_100Thin,
+    'MaterialSymbols_200ExtraLight': MaterialSymbols_200ExtraLight,
+    'MaterialSymbols_300Light': MaterialSymbols_300Light,
     'MaterialSymbols_400Regular': MaterialSymbols_400Regular,
-    'MaterialSymbols_700Bold': MaterialSymbols_700Bold,
+    'MaterialSymbols_500Medium': MaterialSymbols_500Medium,
     'MaterialSymbols_600SemiBold': MaterialSymbols_600SemiBold,
+    'MaterialSymbols_700Bold': MaterialSymbols_700Bold,
   });
 
   useEffect(() => {
