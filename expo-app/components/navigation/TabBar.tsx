@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Pressable } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
@@ -6,17 +6,32 @@ import { Icon } from '../ui/Icon';
 import { cn } from '../../lib/utils';
 import { StyledText } from '../ui/StyledText';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import { SearchMenuPopup } from './SearchMenuPopup';
 
 const tabConfig: Record<string, { icon: string; label: string }> = {
     home: { icon: 'home', label: 'Home' },
     'meal-plan': { icon: 'restaurant', label: 'Meal Plan' },
     'shopping-list': { icon: 'shopping_cart', label: 'List' },
-    search: { icon: 'search', label: 'Search' },
 };
 
 export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
   const insets = useSafeAreaInsets();
-  const handleScannerPress = () => console.log("Scanner pressed!");
+  const router = useRouter();
+  const [menuVisible, setMenuVisible] = useState(false);
+
+  const handleScannerPress = () => {
+    setMenuVisible(true);
+  };
+
+  const handleSearchPress = () => {
+    setMenuVisible(false);
+    router.push('/(app)/(screens)/search');
+  };
+
+  const handleCameraPress = () => {
+    setMenuVisible(false);
+    router.push('/(app)/(screens)/camera');
+  };
 
   return (
     <View
@@ -65,6 +80,13 @@ export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
             </View>
         </Pressable>
       </View>
+
+      <SearchMenuPopup
+        visible={menuVisible}
+        onClose={() => setMenuVisible(false)}
+        onSearchPress={handleSearchPress}
+        onCameraPress={handleCameraPress}
+      />
     </View>
   );
 }

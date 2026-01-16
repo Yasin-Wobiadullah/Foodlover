@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { MealPlanHeader } from '../../../components/meal-plan/MealPlanHeader';
+import { TabHeader } from '../../../components/navigation/TabHeader';
 import { DayAccordion } from '../../../components/meal-plan/DayAccordion';
 import { PlannedMealCard } from '../../../components/meal-plan/PlannedMealCard';
 
@@ -31,7 +31,7 @@ export default function MealPlanScreen() {
 
   return (
     <View className="flex-1 bg-white dark:bg-background-dark">
-      <MealPlanHeader />
+      <TabHeader title="Meal Plan" showBorder />
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: insets.bottom + 100 }}

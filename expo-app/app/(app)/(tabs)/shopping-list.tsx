@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, Pressable } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { ShoppingListHeader } from '../../../components/shopping-list/ShoppingListHeader';
+import { TabHeader } from '../../../components/navigation/TabHeader';
 import { ActiveMealsCard } from '../../../components/shopping-list/ActiveMealsCard';
 import { IngredientGroup } from '../../../components/shopping-list/IngredientGroup';
 import { IngredientRow } from '../../../components/shopping-list/IngredientRow';
 import { ActiveMealsModal } from '../../../components/shopping-list/ActiveMealsModal';
 import { SearchInput } from '../../../components/ui/SearchInput';
+import { Icon } from '../../../components/ui/Icon';
 
 const produce = [
   { name: 'Avocados', notes: '2 ripe ones' },
@@ -28,9 +29,19 @@ export default function ShoppingListScreen() {
   const insets = useSafeAreaInsets();
   const [isModalVisible, setModalVisible] = useState(false);
 
+  const rightAction = (
+    <Pressable className="w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-surface-dark shadow-card text-primary dark:text-white hover:text-tint-green transition-colors">
+      <Icon name="more_horiz" />
+    </Pressable>
+  );
+
   return (
     <View className="flex-1 bg-background-light dark:bg-background-dark">
-      <ShoppingListHeader />
+      <TabHeader 
+        title="Shopping List" 
+        subtitle="12 items to buy"
+        rightAction={rightAction}
+      />
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: insets.bottom + 100 }}

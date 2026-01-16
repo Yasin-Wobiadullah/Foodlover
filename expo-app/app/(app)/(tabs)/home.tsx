@@ -1,12 +1,12 @@
 import React from 'react';
 import { ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { HomeHeader } from '../../../components/home/HomeHeader';
+import { TabHeader } from '../../../components/navigation/TabHeader';
 import { DailyInspirationCard } from '../../../components/home/DailyInspirationCard';
 import { CollectionCard } from '../../../components/home/CollectionCard';
 import { StyledText } from '../../../components/ui/StyledText';
 import { SearchInput } from '../../../components/ui/SearchInput';
-import { Button } from '../../../components/ui/Button'; // This will cause an error until Button.tsx is created
+import { Button } from '../../../components/ui/Button';
 import { Icon } from '../../../components/ui/Icon';
 
 const collections = [
@@ -38,7 +38,7 @@ export default function HomeScreen() {
 
   return (
     <View className="flex-1 bg-background-light dark:bg-background-dark">
-      <HomeHeader />
+      <TabHeader />
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: insets.bottom + 100 }}
