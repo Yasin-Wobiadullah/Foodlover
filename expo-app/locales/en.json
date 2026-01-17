@@ -12,6 +12,22 @@
       "cookedRecipes": "Cooked Recipes",
       "userInfo": "User Info"
     },
+    "recipe": {
+      "by": "by",
+      "level": "Level",
+      "time": "Time",
+      "energy": "Energy",
+      "ingredients": "Ingredients",
+      "items": "items",
+      "instructions": "Instructions",
+      "save": "Save",
+      "addToList": "Add to List",
+      "difficulty": {
+        "easy": "Easy",
+        "medium": "Medium",
+        "hard": "Hard"
+      }
+    },
     "settings": {
       "title": "Settings",
       "accountManagement": "Account Management",

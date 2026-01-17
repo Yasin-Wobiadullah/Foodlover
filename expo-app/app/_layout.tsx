@@ -37,6 +37,7 @@ import { useReactNavigationDevTools } from '@dev-plugins/react-navigation';
 
 import { AuthProvider, useAuth } from '../context/AuthContext';
 import { RevenueCatProvider, useRevenueCat } from '../context/RevenueCatContext';
+import { SearchProvider } from '../context/SearchContext';
 import { useRouter, useSegments, Redirect } from 'expo-router';
 import Purchases from 'react-native-purchases';
 
@@ -128,10 +129,12 @@ export default function RootLayout() {
       <I18nextProvider i18n={i18n}>
         <RevenueCatProvider>
           <AuthProvider>
-            <ThemeProvider value={DefaultTheme}>
-              <RootLayoutNav />
-              <StatusBar style="auto" />
-            </ThemeProvider>
+            <SearchProvider>
+              <ThemeProvider value={DefaultTheme}>
+                <RootLayoutNav />
+                <StatusBar style="auto" />
+              </ThemeProvider>
+            </SearchProvider>
           </AuthProvider>
         </RevenueCatProvider>
       </I18nextProvider>
