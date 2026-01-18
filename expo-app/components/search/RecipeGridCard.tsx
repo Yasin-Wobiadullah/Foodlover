@@ -66,7 +66,7 @@ export function RecipeGridCard({ recipe, onPress }: RecipeGridCardProps) {
                 style={{ fontVariationSettings: "'FILL' 1" }}
               />
               <StyledText className="text-xs font-bold text-white/90">
-                {formatTime(recipe.prep_time_minutes)}
+                {formatTime(recipe.total_time_minutes)}
               </StyledText>
             </View>
           </View>

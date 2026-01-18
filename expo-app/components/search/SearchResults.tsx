@@ -11,19 +11,25 @@ import { getRecipeThumbnailUrl } from '../../lib/imageUtils';
 interface SearchResultsProps {
   results: SearchRecipe[];
   isLoading: boolean;
+  isLoadingMore?: boolean;
+  hasMore?: boolean;
   error: string | null;
   query: string;
   onRecipePress?: (recipeId: string, thumbnailUrl?: string) => void;
   onFilterPress?: () => void;
+  onLoadMore?: () => void;
 }
 
 export function SearchResults({ 
   results, 
-  isLoading, 
+  isLoading,
+  isLoadingMore = false,
+  hasMore = true,
   error, 
   query, 
   onRecipePress,
-  onFilterPress 
+  onFilterPress,
+  onLoadMore
 }: SearchResultsProps) {
   // Loading state
   if (isLoading) {
@@ -87,11 +93,11 @@ export function SearchResults({
     );
   }
 
-  // Results - 2 column grid
+  // Results - 2 column grid (scrolling handled by parent ScrollView)
   return (
     <View>
       <SearchResultsHeader 
-        resultCount={results.length} 
+        resultCount={results.length}
         onFilterPress={onFilterPress}
       />
       <FlatList
@@ -109,6 +115,17 @@ export function SearchResults({
             />
           </View>
         )}
+        ListFooterComponent={
+          isLoadingMore ? (
+            <View className="py-8 items-center">
+              <View className="flex-row items-center gap-2">
+                <View className="w-2 h-2 rounded-full bg-tint-green animate-pulse" />
+                <View className="w-2 h-2 rounded-full bg-tint-green animate-pulse" style={{ animationDelay: '150ms' }} />
+                <View className="w-2 h-2 rounded-full bg-tint-green animate-pulse" style={{ animationDelay: '300ms' }} />
+              </View>
+            </View>
+          ) : null
+        }
       />
     </View>
   );

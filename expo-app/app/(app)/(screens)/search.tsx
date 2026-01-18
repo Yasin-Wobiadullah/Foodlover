@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ScrollView, View } from 'react-native';
+import React, { useState, useRef } from 'react';
+import { ScrollView, View, NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { SearchHeader } from '../../../components/search/SearchHeader';
@@ -28,9 +28,23 @@ export default function SearchScreen() {
   const insets = useSafeAreaInsets();
   const router = useRouter();
   const [activeFilter, setActiveFilter] = useState('Nutrition');
+  const scrollViewRef = useRef<ScrollView>(null);
   
   // Get search context
-  const { searchQuery, searchResults, isSearching, error, performSearch } = useSearch();
+  const { searchQuery, searchResults, isSearching, isLoadingMore, hasMore, error, performSearch, loadMore } = useSearch();
+
+  // Handle scroll for pagination
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const { layoutMeasurement, contentOffset, contentSize } = event.nativeEvent;
+    
+    // Calculate scroll percentage (0 to 1)
+    const scrollPercentage = (layoutMeasurement.height + contentOffset.y) / contentSize.height;
+    
+    // Trigger load more at 80% scroll
+    if (scrollPercentage >= 0.8 && hasMore && !isLoadingMore && searchQuery) {
+      loadMore();
+    }
+  };
 
   const handleRecipePress = (recipeId: string, thumbnailUrl?: string) => {
     // Pass thumbnail URL as query param for faster initial load
@@ -54,9 +68,12 @@ export default function SearchScreen() {
     <View className="flex-1 bg-background-light dark:bg-background-dark">
       <SearchHeader />
       <ScrollView
+        ref={scrollViewRef}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: insets.bottom + 100 }}
         keyboardShouldPersistTaps="handled"
+        onScroll={handleScroll}
+        scrollEventThrottle={400}
       >
         <View className="px-6">
           <View className="mb-6">
@@ -72,10 +89,13 @@ export default function SearchScreen() {
             <SearchResults
               results={searchResults}
               isLoading={isSearching}
+              isLoadingMore={isLoadingMore}
+              hasMore={hasMore}
               error={error}
               query={searchQuery}
               onRecipePress={handleRecipePress}
               onFilterPress={handleFilterPress}
+              onLoadMore={loadMore}
             />
           ) : (
             <>

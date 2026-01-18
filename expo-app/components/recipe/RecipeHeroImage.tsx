@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Image, ActivityIndicator } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { View, Image, ActivityIndicator, Animated } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { getRecipeThumbnailUrl, getFullImageUrl } from '../../lib/imageUtils';
 
@@ -9,11 +9,21 @@ interface RecipeHeroImageProps {
 }
 
 export function RecipeHeroImage({ imageUrl, thumbnailUrl }: RecipeHeroImageProps) {
-  const [isFullImageLoaded, setIsFullImageLoaded] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const fullImageOpacity = useRef(new Animated.Value(0)).current;
 
   const thumbUrl = thumbnailUrl || getRecipeThumbnailUrl(imageUrl);
   const fullUrl = getFullImageUrl(imageUrl);
+
+  const handleFullImageLoad = () => {
+    setIsLoading(false);
+    // Faster, snappier animation (200ms instead of default ~300ms)
+    Animated.timing(fullImageOpacity, {
+      toValue: 1,
+      duration: 200,
+      useNativeDriver: true,
+    }).start();
+  };
 
   return (
     <View className="relative px-2">
@@ -26,17 +36,16 @@ export function RecipeHeroImage({ imageUrl, thumbnailUrl }: RecipeHeroImageProps
           source={{ uri: thumbUrl }}
           className="absolute inset-0 w-full h-full"
           resizeMode="cover"
-          blurRadius={isFullImageLoaded ? 0 : 0.5}
           onLoadEnd={() => setIsLoading(false)}
         />
 
-        {/* Full resolution image - loads in background */}
-        <Image
+        {/* Full resolution image - loads in background with animated opacity */}
+        <Animated.Image
           source={{ uri: fullUrl }}
           className="absolute inset-0 w-full h-full"
           resizeMode="cover"
-          style={{ opacity: isFullImageLoaded ? 1 : 0 }}
-          onLoadEnd={() => setIsFullImageLoaded(true)}
+          style={{ opacity: fullImageOpacity }}
+          onLoadEnd={handleFullImageLoad}
         />
 
         {/* Loading indicator */}

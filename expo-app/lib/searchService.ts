@@ -15,7 +15,7 @@ export interface SearchRecipe {
   protein_per_serving: number | null;
   carbs_per_serving: number | null;
   fat_per_serving: number | null;
-  prep_time_minutes: number | null;
+  total_time_minutes: number | null;
   cuisine_name: string | null;
   diet_name: string | null;
   diet_icon: string | null;
@@ -82,13 +82,13 @@ export async function searchRecipes(
       (data || []).map(async (item: any) => {
         const recipeId = item.recipes.id;
 
-        // Fetch prep time
+        // Fetch total time (sum of all time types)
         const { data: timeData } = await supabase
           .from('recipe_times')
           .select('minutes')
-          .eq('recipe_id', recipeId)
-          .eq('time_type_id', 'prep')
-          .single();
+          .eq('recipe_id', recipeId);
+        
+        const totalTime = timeData?.reduce((sum, t) => sum + (t.minutes || 0), 0) || null;
 
         // Fetch first cuisine
         const { data: cuisineData } = await supabase
@@ -155,7 +155,7 @@ export async function searchRecipes(
           protein_per_serving: item.recipes.protein_per_serving,
           carbs_per_serving: item.recipes.carbs_per_serving,
           fat_per_serving: item.recipes.fat_per_serving,
-          prep_time_minutes: timeData?.minutes || null,
+          total_time_minutes: totalTime,
           cuisine_name: (cuisineData as any)?.cuisines?.cuisine_translations?.[0]?.name || null,
           diet_name: (selectedDiet as any)?.diets?.diet_translations?.[0]?.name || null,
           diet_icon: (selectedDiet as any)?.diets?.icon_identifier || null,

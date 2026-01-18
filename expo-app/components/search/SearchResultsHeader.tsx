@@ -5,15 +5,13 @@ import { StyledText } from '../ui/StyledText';
 
 interface SearchResultsHeaderProps {
   resultCount: number;
+  totalCount?: number;
   onFilterPress?: () => void;
 }
 
-export function SearchResultsHeader({ resultCount, onFilterPress }: SearchResultsHeaderProps) {
+export function SearchResultsHeader({ resultCount, totalCount = 0, onFilterPress }: SearchResultsHeaderProps) {
   return (
-    <View className="flex-row items-center justify-between mb-5">
-      <StyledText className="text-sm font-bold text-gray-400 uppercase tracking-wider">
-        {resultCount} {resultCount === 1 ? 'Result' : 'Results'}
-      </StyledText>
+    <View className="flex-row justify-end items-center mb-6">
       <Pressable 
         onPress={onFilterPress}
         className="flex-row items-center gap-1"
